@@ -1,11 +1,106 @@
 <!DOCTYPE html>
-<html lang="ko">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>안녕하세요.</title>
-</head>
-<body>
-    <h1>안녕하세요.<h1>
-</body>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <meta name="robots" content="noindex" />
+
+    <title>CodePen - position fixed header and footer</title>
+
+    <link
+      rel="canonical"
+      href="https://codepen.io/bramus/pen/eYMZEaV/addc16387bdd13083e05948afcbb8d63"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <style>
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        width: 100%;
+      }
+
+      :root {
+        --topbar-height: 2rem;
+        --bottombar-height: 4rem;
+      }
+
+      body {
+        min-height: 300%;
+        background-size: 50px 50px;
+        background-color: aliceblue;
+        background-image: linear-gradient(
+            to right,
+            rgb(0 0 0 / 0.05) 1px,
+            transparent 1px
+          ),
+          linear-gradient(to bottom, rgb(0 0 0 / 0.05) 1px, transparent 1px);
+        padding: var(--topbar-height) 0 var(--bottombar-height) 0;
+      }
+
+      main {
+        font-size: 10em;
+        color: rgb(0 0 0 / 0.1);
+        word-break: break-all;
+      }
+
+      header,
+      footer {
+        position: fixed;
+        left: 0;
+        right: 0;
+        background: #ccc;
+        text-align: center;
+        display: grid;
+        place-content: center;
+      }
+
+      header {
+        top: 0;
+        height: var(--topbar-height);
+        border-bottom: 1px solid #666;
+      }
+
+      footer {
+        bottom: 0;
+        height: var(--bottombar-height);
+        border-top: 1px solid #666;
+      }
+      input {
+        display: inline-block;
+        font-size: 16px;
+        margin: 5px;
+        padding: 5px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <header>fixed header and footer, fixed</header>
+    <main>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id velit
+        tempore, commodi minima quisquam aperiam magni eaque hic ipsam cumque
+        quas. Labore sed atque numquam culpa in repellendus modi iure!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id velit
+        tempore, commodi minima quisquam aperiam magni eaque hic ipsam cumque
+        quas. Labore sed atque numquam culpa in repellendus modi iure!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id velit
+        tempore, commodi minima quisquam aperiam magni eaque hic ipsam cumque
+        quas. Labore sed atque numquam culpa in repellendus modi iure!
+      </p>
+    </main>
+    <footer>
+      <input type="text" placeholder="inputBox" />I am the bottom bar
+    </footer>
+  </body>
 </html>
