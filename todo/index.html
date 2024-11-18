@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>My To-do List</title>
+		<link rel="stylesheet" href="./style.css" />
+		<script src="https://kit.fontawesome.com/d1ca41e896.js" crossorigin="anonymous"></script>
+		<script src="main.js" defer></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<header class="header"><h1>* TO DO LIST *</h1></header>
+			<ul class="list">
+				<li class="item">
+					<div>
+						<input type="checkbox" id="todo1" />
+						<label for="todo1">텍스트~~~~~~~~ 텍스트~~~~~~~~ 텍스트~~~~~~~~ 텍스트~~~~~~~~</label>
+					</div>
+					<button class="item__btn"><i class="fa-solid fa-trash"></i></button>
+				</li>
+				<li class="item">
+					<div>
+						<input type="checkbox" id="todo2" />
+						<label for="todo2">텍스트~~~~~~~~ 텍스트~~~~~~~~ 텍스트~~~~~~~~ 텍스트~~~~~~~~</label>
+					</div>
+					<button class="item__btn"><i class="fa-solid fa-trash"></i></button>
+				</li>
+				<li class="item">
+					<div>
+						<input type="checkbox" id="todo3" />
+						<label for="todo3">텍스트~~~~~~~~ 텍스트~~~~~~~~ 텍스트~~~~~~~~ 텍스트~~~~~~~~</label>
+					</div>
+					<button class="item__btn"><i class="fa-solid fa-trash"></i></button>
+				</li>
+			</ul>
+			<footer class="footer">
+				<input type="text" class="footer__input" placeholder="텍스트를 입력하세요." />
+				<button type="submit" class="footer__btn"><i class="fa-solid fa-plus"></i></button>
+			</footer>
+		</div>
+	</body>
+</html>

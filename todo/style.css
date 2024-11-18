@@ -1,0 +1,100 @@
+/* default */
+@font-face {
+	font-family: 'Pretendard-Regular';
+	src: url('https://fastly.jsdelivr.net/gh/Project-Noonnu/noonfonts_2107@1.1/Pretendard-Regular.woff') format('woff');
+	font-weight: 400;
+	font-style: normal;
+}
+
+/* title */
+@font-face {
+	font-family: 'HSJiptokki-Round';
+	src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/HSJiptokki-Round.woff2') format('woff2');
+	font-weight: 800;
+	font-style: normal;
+}
+
+:root {
+	--black: #000;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 100%;
+}
+
+.wrap {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	display: flex;
+	flex-direction: column;
+	/* padding: 1rem; */
+	width: 360px;
+	height: 50vh;
+	transform: translate(-50%, -50%);
+	box-sizing: border-box;
+	border: 2px solid var(--black);
+	border-radius: 1rem;
+	overflow: hidden;
+}
+.header {
+	padding: 1rem;
+	font-weight: bold;
+	text-align: center;
+}
+.header h1 {
+	margin: 0;
+	padding: 0;
+	font-family: 'HSJiptokki-Round';
+	font-size: 2rem;
+	border-bottom: 1px solid var(--black);
+}
+.list {
+	padding: 0 1rem;
+	margin: 0;
+	list-style: none;
+}
+.item {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 0.8rem 0;
+	border-bottom: 2px dashed var(--black);
+}
+.item > div {
+	display: flex;
+	align-items: flex-start;
+	margin-right: 0.5rem;
+}
+.item__btn {
+	margin-left: auto;
+}
+.footer {
+	display: flex;
+	/* flex-direction: column; */
+	align-items: center;
+	/* justify-content: center; */
+	/* padding: 1rem; */
+	width: 100%;
+	margin-top: auto;
+	background-color: var(--black);
+	box-sizing: border-box;
+}
+.footer__input {
+	display: block;
+	/* padding: 0.5rem; */
+	width: 100%;
+	border: none;
+	box-sizing: border-box;
+}
+.footer__btn {
+	/* margin: 1rem; */
+	width: 3rem;
+	height: 3rem;
+	font-size: 1.5rem;
+	/* border-radius: 100%; */
+}
