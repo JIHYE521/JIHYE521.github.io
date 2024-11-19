@@ -68,8 +68,10 @@ button {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	min-height: 61px;
 	padding: 0.8rem 0;
 	border-bottom: 2px dashed var(--black);
+	box-sizing: border-box;
 }
 .item > div {
 	display: flex;
@@ -79,6 +81,9 @@ button {
 
 .item input[type='checkbox']:checked + label {
 	text-decoration: line-through;
+}
+.item__label {
+	margin-left: 0.4rem;
 }
 .item__btn {
 	display: block;
