@@ -3,12 +3,20 @@ const form = document.querySelector('.form');
 const input = document.querySelector('.form__input');
 const addBtn = document.querySelector('.form__btn');
 
+let todoData = [];
+
 form.addEventListener('submit', (e) => {
 	addItem();
 	e.preventDefault();
 });
 
-// todo 추가하기
+items.addEventListener('click', (e) => {
+	const btn = e.target.closest('.item__btn');
+	if (!btn) return;
+	const li = btn.closest('.item');
+	li.remove();
+});
+
 function addItem() {
 	let text = input.value;
 	if (text.trim() === '') {
@@ -16,14 +24,22 @@ function addItem() {
 		return;
 	}
 	const id = crypto.randomUUID();
-	createItem(text, id);
+	const newTodo = { id, text, isChecked: false };
+	todoData.push(newTodo);
+	addTodo(newTodo);
+	saveTodo(todoData);
+
 	input.value = '';
 	input.focus();
 }
 
-// todo 만들기
-function createItem(text, id) {
-	const li = `
+function addTodo({ id, text, isChecked }) {
+	const li = createElement(id, text, isChecked);
+	items.insertAdjacentHTML('beforeend', li);
+}
+
+function createElement(id, text, isChecked) {
+	return `
   <li class="item">
     <div>
       <input type="checkbox" id="id-${id}"/>
@@ -32,47 +48,17 @@ function createItem(text, id) {
     <button class="item__btn"><i class="fa-solid fa-trash"></i></button>
   </li>
   `;
-	items.insertAdjacentHTML('beforeend', li);
-	setTodo(id, text);
 }
 
-// todo 삭제하기
-items.addEventListener('click', (e) => {
-	const btn = e.target.closest('.item__btn');
-	if (!btn) return;
-	const li = btn.closest('.item');
-	li.remove();
-});
+function saveTodo(todolist) {
+	localStorage.setItem('todolist', JSON.stringify(todolist));
+}
 
-const todoData = [];
-
-// 불러오기
 function getTodo() {
-	let getData = localStorage.getItem('todolist');
-	getData = JSON.parse(getData);
+	const getData = localStorage.getItem('todolist');
 	if (!getData) return;
-	initTodo(getData);
+	todoData = JSON.parse(getData);
+	todoData.forEach(addTodo);
 }
+
 getTodo();
-
-// 저장하기
-function setTodo(id, text) {
-	todoData.push({ id, text, isChecked: false });
-	console.log(todoData);
-	localStorage.setItem('todolist', JSON.stringify(todoData));
-}
-
-function initTodo(todolist) {
-	todolist.forEach(({ id, text, isChecked }) => {
-		const li = `
-      <li class="item">
-        <div>
-          <input type="checkbox" id="id-${id}" ${isChecked ? 'checked' : ''}/>
-          <label for="id-${id}" class="item__label">${text}</label>
-        </div>
-        <button class="item__btn"><i class="fa-solid fa-trash"></i></button>
-      </li>
-    `;
-		items.insertAdjacentHTML('beforeend', li);
-	});
-}
