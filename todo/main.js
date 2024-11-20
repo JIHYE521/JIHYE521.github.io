@@ -14,6 +14,12 @@ items.addEventListener('click', (e) => {
 	const btn = e.target.closest('.item__btn');
 	if (!btn) return;
 	const li = btn.closest('.item');
+	const id = li.querySelector('input').id.replace('id-', '');
+	console.log(id);
+
+	todoData = todoData.filter((todo) => todo.id !== id);
+	saveTodo(todoData);
+
 	li.remove();
 });
 
