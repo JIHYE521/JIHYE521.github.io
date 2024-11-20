@@ -10,8 +10,25 @@
 	</head>
 	<body>
 		<div class="wrap">
-			<header class="header"><h1>* TO DO LIST *</h1></header>
-			<ul class="list"> </ul>
+			<header class="header">
+				<h1>* TO DO LIST *</h1>
+				<div class="btns">
+					<button class="filter-done">완료된 목록보기</button>
+					<button class="filter-undone">미완료된 목록보기</button>
+					<button class="delete-all">전체삭제</button>
+					<button class="delete-done">완료삭제</button>
+				</div>
+			</header>
+
+			<ul class="list">
+				<li class="item">
+					<div class="todo-item">
+						<input type="checkbox" id="id-000" checked />
+						<label for="id-000" class="item__label">Sample</label>
+					</div>
+					<button class="item__btn"><i class="fa-solid fa-trash"></i></button>
+				</li>
+			</ul>
 			<footer class="footer">
 				<form action="" class="form">
 					<input type="text" class="form__input" placeholder="텍스트를 입력하세요." />
