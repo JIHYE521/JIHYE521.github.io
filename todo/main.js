@@ -44,16 +44,18 @@ items.addEventListener('click', (e) => {
 	const btn = e.target.closest('.item__btn');
 	if (!btn) return;
 	const li = btn.closest('.item');
-	const div = btn.closest('.todo-item');
 	const id = li.querySelector('input').id.replace('id-', '');
-	removeItem();
+	console.log(id);
+
+	removeItem(li, id);
 });
 
-function removeItem() {
+function removeItem(item, id) {
 	todoData = todoData.filter((todo) => todo.id !== id);
 	saveTodo(todoData);
-	li.remove();
+	item.remove();
 }
+
 function addItem() {
 	let text = input.value;
 	if (text.trim() === '') {
