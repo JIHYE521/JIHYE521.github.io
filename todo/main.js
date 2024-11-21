@@ -19,21 +19,27 @@ let todoData = [];
 
 // 전체 삭제
 btnDelAll.addEventListener('click', clearTodos);
+
+// 완료 삭제
+btnDelDone.addEventListener('click', cleartDoneTodos);
+
 function clearTodos() {
 	if (todoData.length <= 0) {
-		// alert('삭제할 할일이 없습니다.');
 		return;
 	}
 	if (confirm('전체 삭제하시겠습니까?')) {
 		todoData = [];
 		localStorage.removeItem('todolist');
-		todos.innerHTML = '';
+		renderTodos(todoData);
 	}
 }
-// 완료 삭제
-btnDelDone.addEventListener('click', () => {
-	// todoData
-});
+
+function cleartDoneTodos() {
+	const filterData = todoData.filter((todo) => todo.isChecked !== true);
+	todoData = filterData;
+	saveTodo(todoData);
+	renderTodos(todoData);
+}
 
 form.addEventListener('submit', (e) => {
 	addItem();
@@ -45,9 +51,13 @@ items.addEventListener('click', (e) => {
 	if (!btn) return;
 	const li = btn.closest('.item');
 	const id = li.querySelector('input').id.replace('id-', '');
-	console.log(id);
-
 	removeItem(li, id);
+});
+
+items.addEventListener('change', (e) => {
+	const id = e.target.id.replace('id-', '');
+	todoData = todoData.map((todo) => (todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo));
+	saveTodo(todoData);
 });
 
 function removeItem(item, id) {
@@ -90,6 +100,15 @@ function createElement(id, text, isChecked) {
     <button class="item__btn"><i class="fa-solid fa-trash"></i></button>
   </li>
   `;
+}
+
+function renderTodos(todos) {
+	items.innerHTML = '';
+
+	todos.forEach(({ id, text, isChecked }) => {
+		const li = createElement(id, text, isChecked);
+		items.insertAdjacentHTML('beforeend', li);
+	});
 }
 
 function saveTodo(todolist) {
