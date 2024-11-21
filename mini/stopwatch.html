@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Stopwatch</title>
+		<style></style>
+	</head>
+	<body>
+		<div class="timer">00 : 00 : 00</div>
+		<button class="btn-start">start</button>
+		<button class="btn-stop">stop</button>
+		<button class="btn-reset">reset</button>
+		<script>
+			const displayTimer = document.querySelector('.timer');
+			const startBtn = document.querySelector('.btn-start');
+			const stopBtn = document.querySelector('.btn-stop');
+			const resetBtn = document.querySelector('.btn-reset');
+
+			let timer;
+			let m = 0;
+			let s = 0;
+			let ms = 0;
+
+			startBtn.addEventListener('click', () => {
+				console.log('start');
+
+				timer = setInterval(() => {
+					ms++;
+
+					if (ms == 100) {
+						ms = 0;
+						s++;
+					}
+
+					if (s == 60) {
+						s = 0;
+						m++;
+					}
+
+					displayTimer.textContent = `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}:${String(ms).padStart(2, '0')}`;
+				}, 10);
+			});
+			stopBtn.addEventListener('click', () => {
+				clearInterval(timer);
+			});
+			resetBtn.addEventListener('click', () => {
+				clearInterval(timer);
+				displayTimer.textContent = '00:00:00';
+			});
+		</script>
+	</body>
+</html>
